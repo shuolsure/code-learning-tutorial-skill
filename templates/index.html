@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{PROJECT_NAME}} - 代码学习教程</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/socratic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>{{PROJECT_NAME}}</span>
+            </div>
+            <p class="tagline">代码学习教程</p>
+        </div>
+        
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索..." oninput="handleSearch(this.value)">
+        </div>
+        
+        <div class="nav-menu">
+            <a href="#overview" class="nav-item active" data-section="overview">
+                <i class="fas fa-home"></i>
+                <span>项目概述</span>
+            </a>
+            <a href="#features" class="nav-item" data-section="features">
+                <i class="fas fa-cogs"></i>
+                <span>核心功能</span>
+            </a>
+            <a href="#architecture" class="nav-item" data-section="architecture">
+                <i class="fas fa-project-diagram"></i>
+                <span>系统架构</span>
+            </a>
+            <a href="#folder-structure" class="nav-item" data-section="folder-structure">
+                <i class="fas fa-folder-tree"></i>
+                <span>文件夹结构</span>
+            </a>
+            <a href="#methods" class="nav-item" data-section="methods">
+                <i class="fas fa-code"></i>
+                <span>方法介绍</span>
+            </a>
+            <a href="#demo" class="nav-item" data-section="demo">
+                <i class="fas fa-play-circle"></i>
+                <span>运行演示</span>
+            </a>
+            <a href="#socratic" class="nav-item" data-section="socratic">
+                <i class="fas fa-question-circle"></i>
+                <span>苏格拉底问答</span>
+            </a>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-header">
+                <span>学习进度</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Section: Overview -->
+        <section id="overview" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-home"></i> 项目概述</h1>
+                <div class="overview-hero">
+                    <div class="project-badge">
+                        <span class="project-icon">{{PROJECT_ICON}}</span>
+                        <h2>{{PROJECT_NAME}}</h2>
+                        <p class="tagline">{{PROJECT_TAGLINE}}</p>
+                    </div>
+                </div>
+                <div class="overview-grid">
+                    <div class="overview-item">
+                        <div class="overview-icon">🎯</div>
+                        <h3>核心定位</h3>
+                        <p>{{CORE_POSITIONING}}</p>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-icon">⚡</div>
+                        <h3>主要特点</h3>
+                        <p>{{KEY_FEATURES}}</p>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-icon">👥</div>
+                        <h3>适用人群</h3>
+                        <p>{{TARGET_USERS}}</p>
+                    </div>
+                    <div class="overview-item">
+                        <div class="overview-icon">🚀</div>
+                        <h3>学习价值</h3>
+                        <p>{{LEARNING_VALUE}}</p>
+                    </div>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">{{FILES_COUNT}}</span>
+                        <span class="stat-label">代码文件</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{MODULES_COUNT}}</span>
+                        <span class="stat-label">功能模块</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{METHODS_COUNT}}</span>
+                        <span class="stat-label">核心方法</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Features -->
+        <section id="features" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-cogs"></i> 核心功能</h1>
+                <div class="features-grid">
+                    {{FEATURES_CARDS}}
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Architecture -->
+        <section id="architecture" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-project-diagram"></i> 系统架构</h1>
+                <div class="architecture-diagram">
+                    {{ARCHITECTURE_SVG}}
+                </div>
+                <div class="module-cards">
+                    {{MODULE_CARDS}}
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Folder Structure -->
+        <section id="folder-structure" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-folder-tree"></i> 文件夹结构</h1>
+                <div class="folder-tree" id="folderTree">
+                    {{FOLDER_TREE}}
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Methods -->
+        <section id="methods" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-code"></i> 方法介绍</h1>
+                <div class="methods-pyramid">
+                    {{METHODS_PYRAMID}}
+                </div>
+                <div class="knowledge-graph" id="knowledgeGraph">
+                    {{KNOWLEDGE_GRAPH}}
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Demo -->
+        <section id="demo" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-play-circle"></i> 运行演示</h1>
+                <div class="demo-selector">
+                    {{DEMO_BUTTONS}}
+                </div>
+                <div class="demo-container">
+                    <div class="demo-flow" id="demoFlow">
+                        {{DEMO_FLOW_SVG}}
+                    </div>
+                    <div class="demo-controls">
+                        <button onclick="playDemo()"><i class="fas fa-play"></i></button>
+                        <button onclick="pauseDemo()"><i class="fas fa-pause"></i></button>
+                        <button onclick="resetDemo()"><i class="fas fa-redo"></i></button>
+                        <button onclick="stepForward()"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                    <div class="demo-step-detail" id="demoStepDetail">
+                        <h3 id="stepTitle">{{STEP_TITLE}}</h3>
+                        <p id="stepDescription">{{STEP_DESCRIPTION}}</p>
+                        <pre id="stepCode"><code>{{STEP_CODE}}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Socratic -->
+        <section id="socratic" class="section">
+            <div class="content-card">
+                <h1><i class="fas fa-question-circle"></i> 苏格拉底问答</h1>
+                <div class="socratic-container">
+                    {{SOCRATIC_QUESTIONS}}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Code Modal -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">代码解析</h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="code-tabs" id="codeTabs"></div>
+                <div class="code-content" id="codeContent"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="related-files" id="relatedFiles"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="js/code-data.js"></script>
+    <script src="js/methods-data.js"></script>
+    <script src="js/demo-data.js"></script>
+    <script src="js/tutorial.js"></script>
+</body>
+</html>
