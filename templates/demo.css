@@ -1,0 +1,210 @@
+.demo-container {
+    background: var(--bg-dark);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.demo-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.demo-btn {
+    padding: 12px 24px;
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.demo-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.demo-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-color: transparent;
+    color: white;
+}
+
+.demo-flow {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.flow-svg {
+    width: 100%;
+    min-width: 600px;
+}
+
+.flow-svg .flow-node rect {
+    transition: all 0.3s;
+}
+
+.flow-svg .flow-node.active rect {
+    fill: #48bb78;
+    filter: drop-shadow(0 0 10px rgba(72, 187, 120, 0.5));
+}
+
+.flow-svg .flow-node:hover rect {
+    opacity: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.flow-svg .flow-edge {
+    stroke-dasharray: 0;
+    animation: none;
+}
+
+.flow-svg .flow-edge.animated {
+    stroke-dasharray: 10;
+    animation: flowDash 1s linear infinite;
+}
+
+@keyframes flowDash {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+.demo-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.demo-controls button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-controls button:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.demo-controls button:active {
+    transform: scale(0.95);
+}
+
+.demo-step-detail {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--primary);
+}
+
+.demo-step-detail h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.demo-step-detail p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.demo-step-detail pre {
+    background: var(--bg-dark);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.demo-step-detail code {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.flow-step:hover {
+    background: var(--bg-hover);
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.step-content p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .demo-selector {
+        flex-direction: column;
+    }
+    
+    .demo-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .demo-controls {
+        flex-wrap: wrap;
+    }
+    
+    .demo-controls button {
+        width: 40px;
+        height: 40px;
+    }
+}

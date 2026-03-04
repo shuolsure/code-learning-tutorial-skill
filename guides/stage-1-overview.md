@@ -2,37 +2,91 @@
 
 Create a comprehensive project overview section that introduces beginners to the codebase.
 
-## Data Collection
+## 🔧 Tool Commands (Copy-Paste Ready)
 
-```bash
-# Count Python files
-find . -name "*.py" -not -path "./tests/*" -not -path "./.venv/*" | wc -l
+### 1.1 Get Project Name & Description
 
-# Count classes
-grep -r "^class " --include="*.py" | wc -l
-
-# Count functions  
-grep -r "^def \|^async def " --include="*.py" | wc -l
-
-# Find entry point
-grep -r "if __name__" --include="*.py" -l
+```
+Tool: Read
+File: README.md
+Limit: 20 lines
+Goal: Extract project name (line 1) and description (lines 2-5)
 ```
 
-## Placeholder Filling Guide
+### 1.2 Count Statistics
 
-| Placeholder | How to Fill | Tool |
-|-------------|-------------|------|
-| `PROJECT_NAME` | README.md title or folder name | Read README.md |
-| `PROJECT_TAGLINE` | README.md description | Read README.md |
-| `CORE_POSITIONING` | What problem does it solve? | Analyze main.py |
-| `KEY_FEATURES` | List 3-5 main capabilities | Grep for main functions |
-| `TARGET_USERS` | Who benefits from this? | Infer from complexity |
-| `LEARNING_VALUE` | What will beginners learn? | Analyze architecture |
-| `FILES_COUNT` | Count source files | Glob + wc -l |
-| `MODULES_COUNT` | Count top-level folders | LS |
-| `METHODS_COUNT` | Count functions/methods | Grep + wc -l |
+```
+Tool: Glob
+Pattern: **/*.py
+Path: project_root
+Goal: Count Python files (exclude tests, venv)
 
-## HTML Template
+Tool: Grep  
+Pattern: ^class 
+Path: project_root
+Output: count
+Goal: Count classes
+
+Tool: Grep
+Pattern: ^def |^async def 
+Path: project_root
+Output: count
+Goal: Count functions
+```
+
+### 1.3 Find Entry Point
+
+```
+Tool: Grep
+Pattern: if __name__|def main|async def run
+Path: project_root
+Output: files_with_matches
+Goal: Find main entry point
+```
+
+### 1.4 Analyze Core Positioning
+
+```
+Tool: Read
+File: main.py OR __main__.py OR README.md
+Limit: 50 lines
+Goal: Understand what problem the project solves
+```
+
+---
+
+## 📋 Placeholder Filling Table
+
+| Placeholder | Tool | Command | Example Output |
+|-------------|------|---------|----------------|
+| `{{PROJECT_NAME}}` | Read | README.md line 1 | "Nanobot" |
+| `{{PROJECT_TAGLINE}}` | Read | README.md lines 2-5 | "A lightweight AI agent framework" |
+| `{{PROJECT_ICON}}` | Infer | Based on project type | 🤖 (AI), 🌐 (Web), 📊 (Data), 📱 (Mobile) |
+| `{{CORE_POSITIONING}}` | Read | main.py + README | "Simplifies building AI agents with tool calling" |
+| `{{KEY_FEATURES}}` | Grep | Find main functions | "Async message processing, Tool registry, Multi-provider support" |
+| `{{TARGET_USERS}}` | Infer | From complexity | "Python developers interested in AI agents" |
+| `{{LEARNING_VALUE}}` | Analyze | Architecture | "Async patterns, Message queues, Tool abstraction" |
+| `{{FILES_COUNT}}` | Glob | `**/*.py` count | "42" |
+| `{{MODULES_COUNT}}` | LS | Top-level folders | "5" |
+| `{{METHODS_COUNT}}` | Grep | `^def ` count | "87" |
+
+---
+
+## 🎨 Icon Selection Guide
+
+| Project Type | Icon | Keywords |
+|--------------|------|----------|
+| AI/ML/LLM | 🤖 | agent, ai, llm, ml, neural |
+| Web/API | 🌐 | web, api, http, rest, flask |
+| Data/Analytics | 📊 | data, analytics, etl, pipeline |
+| CLI/Tools | 🔧 | cli, tool, utility, command |
+| Mobile/App | 📱 | mobile, app, ios, android |
+| Game | 🎮 | game, engine, graphics |
+| DevOps/Infra | 🚀 | deploy, k8s, docker, infra |
+
+---
+
+## 📝 HTML Template
 
 ```html
 <section id="overview" class="section">
@@ -88,10 +142,12 @@ grep -r "if __name__" --include="*.py" -l
 </section>
 ```
 
-## Workflow
+---
 
-1. **Read README.md** - Get project name and description
-2. **Analyze main.py** - Understand core functionality
-3. **Count statistics** - Files, classes, functions
-4. **Fill template** - Replace all placeholders
-5. **Verify completeness** - Check all sections filled
+## ✅ Verification
+
+After filling, verify:
+- [ ] All placeholders replaced (no `{{}}` remaining)
+- [ ] Statistics are accurate (manually count a few)
+- [ ] Icon matches project type
+- [ ] Core positioning is clear and concise
